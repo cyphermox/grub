@@ -5900,9 +5900,11 @@ device), then you can correct this and enter normal mode manually:
 set
 # Find out which devices are available:
 ls
-# Set to the correct value, which might be something like this:
+# Set to the correct values for prefix and root, which might be something
+# like this:
 set prefix=(hd0,1)/grub
 set root=(hd0,1)
+# Try to load the normal plugin again
 insmod normal
 normal
 @end group
@@ -5939,7 +5941,9 @@ Installing to the whole disk device is normally more robust.
 Check that GRUB actually knows how to read from the device and file system
 containing @file{/boot/grub}.  It will not be able to read from encrypted
 devices with unsupported encryption scheme, nor from file systems for which
-support has not yet been added to GRUB.
+support has not yet been added to GRUB. One way to verify this is to use
+@command{grub-mount} (@pxref{Invoking grub-mount}) to verify that GRUB can
+mount your partitions.
 @end itemize
 
 
